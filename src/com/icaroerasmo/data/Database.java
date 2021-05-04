@@ -35,9 +35,9 @@ public class Database {
 	}
 	
 	public Double calcularProbabilidadesCondicionais(
-			String coluna, String valor, String colunaCond, String valorCond) {
+			String coluna, String valor, String valorCond) {
 		List<Tupla> dataset = this.tuplas.stream().
-				filter(t -> t.getAsString(colunaCond).
+				filter(t -> t.getAsString(colunaRotulo).
 						equals(valorCond)).
 				collect(Collectors.toList());
 		return calcularProbabilidadeColuna(coluna, valor, dataset);
@@ -52,10 +52,6 @@ public class Database {
 				reduce((v,ac) -> v + ac).orElse(0);
 		
 		return ((double)quantidade)/dataset.size();
-	}
-
-	public String getRotulo() {
-		return this.colunaRotulo;
 	}
 	
 	public Set<String> valoresUnicosRotulo() {

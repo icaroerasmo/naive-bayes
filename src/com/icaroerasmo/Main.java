@@ -25,7 +25,7 @@ public class Main {
 			var probabilidade = db.calcularProbabilidadesRotulo(rotulo); 
 			for(String chave : conjuntoTeste.keySet()) {
 				probabilidade *= db.calcularProbabilidadesCondicionais(
-						chave, conjuntoTeste.get(chave), db.getRotulo(), rotulo);
+						chave, conjuntoTeste.get(chave), rotulo);
 			}
 			
 			if(probabilidade > resultVal) {
