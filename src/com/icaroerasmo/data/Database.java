@@ -45,12 +45,9 @@ public class Database {
 	
 	public Double calcularProbabilidadeColuna(String coluna, String valor, List<Tupla> dataset) {
 		
-		List<String> valoresColunaRotulo = dataset.stream().
-				map(t -> t.getAsString(coluna)).
-				collect(Collectors.toList());
-
-			Integer quantidade = valoresColunaRotulo.stream().
-				filter(v -> v.equals(valor)).
+			Integer quantidade = dataset.stream().
+				filter(t -> t.getAsString(coluna).
+						equals(valor)).
 				map(v -> 1).
 				reduce((v,ac) -> v + ac).orElse(0);
 		
